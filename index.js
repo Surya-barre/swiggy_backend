@@ -9,7 +9,7 @@ import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config();
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // Connect to MongoDB
 connectDB();
@@ -23,7 +23,10 @@ app.use("/vendor", venderRoutes);
 app.use("/firm", firmRoutes);
 app.use("/product",productRoutes);
 
- 
+ app.use("/",(req,res)=>{
+  res.send("welcome to swiggy app")
+
+ })
 // Start server
 app.listen(port, () => {
   console.log(`✅ Server is running at http://localhost:${port}`);
